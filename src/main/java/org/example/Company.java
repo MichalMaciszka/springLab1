@@ -1,19 +1,17 @@
 package org.example;
 
-
 import lombok.*;
 
 import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Getter
 @Setter
+@Builder
 @ToString
 @EqualsAndHashCode
-public class Character implements Serializable {
+public class Company implements Serializable {
     String name;
-    Profession profession;
-    int level;
+    double budget;
 }

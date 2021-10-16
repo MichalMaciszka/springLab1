@@ -7,18 +7,18 @@ import javax.annotation.PostConstruct;
 
 @Component
 public class DataInit {
-    private final CharacterService characterService;
-    private final ProfessionService professionService;
+    private final EmployeeService employeeService;
+    private final CompanyService companyService;
 
     @Autowired
-    public DataInit(CharacterService cs, ProfessionService ps){
-        characterService = cs;
-        professionService = ps;
+    public DataInit(EmployeeService es, CompanyService cs){
+        employeeService = es;
+        companyService = cs;
     }
 
     @PostConstruct
     private synchronized void init(){
-        Profession mage = Profession.builder()
+        /*Profession mage = Profession.builder()
                 .baseArmor(3)
                 .name("Mage")
                 .moveSpeed(5)
@@ -68,7 +68,44 @@ public class DataInit {
         characterService.addCharacter(uhlbert);
         characterService.addCharacter(eloise);
         characterService.addCharacter(zereni);
-        characterService.addCharacter(chef);
+        characterService.addCharacter(chef);*/
+
+        Company comp1 = Company.builder()
+                .name("comp1")
+                .budget(13034.32)
+                .build();
+        Company comp2 = Company.builder()
+                .name("comp2")
+                .budget(78645.43)
+                .build();
+        companyService.add(comp1);
+        companyService.add(comp2);
+
+        Employee e1 = Employee.builder()
+                .id(1)
+                .firstname("C")
+                .lastname("E1")
+                .salary(5279.22)
+                .company(comp1)
+                .build();
+        Employee e2 = Employee.builder()
+                .id(2)
+                .firstname("B")
+                .lastname("E2")
+                .salary(3458.54)
+                .company(comp1)
+                .build();
+        Employee e3 = Employee.builder()
+                .id(3)
+                .firstname("A")
+                .lastname("E3")
+                .salary(1586.45)
+                .company(comp2)
+                .build();
+
+        employeeService.addEmployee(e1);
+        employeeService.addEmployee(e2);
+        employeeService.addEmployee(e3);
 
     }
 
